@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('jose-web:server');
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+const os = require('os')
+
+const server = app.listen(app.get('port'), () => {
+  debug(`Listening on  http://${os.hostname()}:${server.address().port}/`);
+})
