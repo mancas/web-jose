@@ -2,5 +2,12 @@
   "server": {
     "port": 3000,
     "domain": "http://localhost:3000"
+  },
+
+  "db": {
+    "hosts": ["localhost:27017"],
+    "name": "jose-prepro",
+    "username": "root",
+    "password": "root"
   }
 }
