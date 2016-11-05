@@ -9,5 +9,10 @@
     "name": "jose-prepro",
     "username": "root",
     "password": "root"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "secret": "I am the most secret string in the W0rlD!"
   }
 }

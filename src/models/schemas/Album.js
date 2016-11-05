@@ -4,7 +4,10 @@ let model;
 
 module.exports = (mongoose, name) => {
   const schema = mongoose.Schema({
-    title: String,
+    title: {
+      type: String,
+      required: true
+    },
 
     summary: String,
 

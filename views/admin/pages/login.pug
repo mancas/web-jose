@@ -1,0 +1,40 @@
+doctype html
+html(lang='en')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Panel de administración
+    // Bootstrap core CSS
+    link(href='/css/vendor/bootstrap.min.css', rel='stylesheet')
+    link(href='/fonts/css/font-awesome.min.css', rel='stylesheet')
+    link(href='/css/admin/admin.css', rel='stylesheet')
+    //if lt IE 9
+      script(src='../assets/js/ie8-responsive-file-warning.js')
+    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+
+  body
+    if error
+      .alert.alert-danger.alert-dismissible.fade.in(role='alert')
+        button.close(type='button', data-dismiss='alert', aria-label='Close')
+          span(aria-hidden='true') ×
+        strong ¡Uy! ha pasado algo raro…
+        |  #{error}
+    .v-block
+      .logo
+        h1 Logo
+      form(method="post", class={shake: error}).login-block
+        .form-group
+          input(type="text", name="username", required, placeholder="Nombre de usuario").form-control
+        .form-group
+          input(type="password", name="password", required, placeholder="Contraseña").form-control
+        button(type="submit").btn.btn-primary Entrar
+
+    // jQuery
+    script(src='/vendors/jquery/dist/jquery.min.js')
+    // Bootstrap
+    script(src='/vendors/bootstrap/dist/js/bootstrap.min.js')

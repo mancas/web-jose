@@ -1,13 +1,24 @@
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const config = require('config')
+const config = require('config');
 
+// Redis
+const RedisStore = require('connect-redis')(session);
+const redisConf = config.get('redis');
+const redisClient = require('./src/redis/');
+
+const passport = require('passport');
+const PassportManager = require('./sessions/PassportManager');
+
+const auth = require('./routes/auth');
 const index = require('./routes/index');
 const users = require('./routes/users');
+const admin = require('./routes/admin');
 
 const app = express();
 
@@ -17,17 +28,43 @@ app.set('view engine', 'pug');
 
 app.set('port', config.server.port || 3000);
 
+// Add user to all views
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Initialize redis and passport
+app.use(session(
+  {
+    store: new RedisStore({
+      client: redisClient
+    }),
+    secret: redisConf.secret,
+    saveUninitialized: false,
+    resave: false
+  }
+));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
+app.use('/', auth(passport));
 app.use('/', index);
 app.use('/users', users);
+app.use('/admin', admin);
+
+PassportManager.configure(passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
