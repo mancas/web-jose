@@ -13,7 +13,7 @@ const redisConf = config.get('redis');
 const redisClient = require('./src/redis/');
 
 const passport = require('passport');
-const PassportManager = require('./sessions/PassportManager');
+const PassportManager = require('./src/sessions/PassportManager');
 
 const auth = require('./routes/auth');
 const index = require('./routes/index');
