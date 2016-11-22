@@ -1,0 +1,65 @@
+extends ../../base
+
+block content
+  div
+    .page-title
+      .title_left
+
+    .clearfix
+    .row
+      .col-md-12.col-sm-12.col-xs-12
+        .x_panel
+          .x_title
+            h2 #{!edition ? 'Añadir nuevo usuario' : 'Editar usuario '}
+              | &nbsp;
+              if edition
+                code #{user.name}
+            .clearfix
+          .x_content
+            br
+            form.form-horizontal.form-label-left(data-parsley-validate, novalidate, method='post')
+              .form-group.item
+                label.control-label.col-md-3.col-sm-3.col-xs-12(for='username')
+                  | Username
+                  span.required *
+                .col-md-4.col-sm-4.col-xs-12
+                  input.form-control#username(required, type='text', name='username', value=(edition ? user.name : ''), disabled=edition)
+
+              .form-group.item
+                label.control-label.col-md-3.col-sm-3.col-xs-12(for='sex')
+                  | Sex
+                  span.required *
+                .col-md-4.col-sm-4.col-xs-12
+                  select.form-control#sex(required, name='sex')
+                    each sex in sexValues
+                      option(value=sex, selected=(edition && sex == user.sex)) #{sex}
+
+              .form-group.item
+                label.control-label.col-md-3.col-sm-3.col-xs-12(for='password')
+                  | Password
+                  span.required *
+                .col-md-4.col-sm-4.col-xs-12
+                  input.form-control#password(required=(!edition), type='password', name='password', data-validate-length='6,8')
+
+              .form-group.item
+                label.control-label.col-md-3.col-sm-3.col-xs-12(for='password_repeat')
+                  | Repeat password
+                  span.required *
+                .col-md-4.col-sm-4.col-xs-12
+                  input.form-control#password_repeat(required=(!edition), type='password', name='password_repeat', data-validate-linked='password')
+
+              .form-group.item
+                label.control-label.col-md-3.col-sm-3.col-xs-12(for='role')
+                  | Role
+                  span.required *
+                .col-md-4.col-sm-4.col-xs-12
+                  select.form-control#role(required, name='role')
+                    each role in roles
+                      option(value=role, selected=(edition && role == user.role)) #{role}
+
+              .ln_solid
+
+              .form-group
+                .col-md-9.col-sm-9.col-xs-12.col-md-offset-3
+                  button(type='submit').btn.btn-success Create user
+

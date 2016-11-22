@@ -1,0 +1,39 @@
+extends ../../base
+
+block content
+  div
+    .page-title
+      .title_left
+        h3 Users
+      .action-buttons
+        a(href='users/create').btn.btn-default
+          i.fa.fa-plus
+          | Create user
+    .clearfix
+
+    .row
+      .col-md-12
+        .x_panel
+          .x_title
+            h2 User list
+            .clearfix
+          .x_content
+            if users && users.length
+              table.table.table-hover
+                thead
+                  tr
+                    th #ID
+                    th Name
+                    th Sex
+                    th Role
+                    th Actions
+                tbody
+                  each user in users
+                    tr
+                      td #{user._id}
+                      td #{user.name}
+                      td #{user.sex}
+                      td #{user.role}
+                      td Actions!
+            else
+              p There is no users in our database. Please try to add one by clicking on the button

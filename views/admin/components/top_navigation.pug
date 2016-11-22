@@ -8,7 +8,7 @@
         li
           a.user-profile.dropdown-toggle(href='javascript:;', data-toggle='dropdown', aria-expanded='false')
             img(src='/img/admin/user.jpg', alt='')
-            span &nbsp;#{user.name}&nbsp;
+            span &nbsp;#{user && user.name}&nbsp;
             span.fa.fa-angle-down
           ul.dropdown-menu.dropdown-usermenu.pull-right
             li

@@ -8,7 +8,7 @@
         img.img-circle.profile_img(src='/img/user.jpg', alt='...')
       .profile_info
         span Welcome,
-        h2 #{user.name}
+        h2 #{user && user.name}
     br
     #sidebar-menu.main_menu_side.hidden-print.main_menu
       .menu_section
@@ -31,7 +31,7 @@
               li
                 a(href='/admin/users') Todos
               li
-                a(href='/admin/users/add') Nuevo usuario
+                a(href='/admin/users/create') Nuevo usuario
           li
             a
               i.fa.fa-image
