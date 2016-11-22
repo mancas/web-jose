@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const config = require('config');
 
+const models = require('./src/models/index').models;
+
 // Redis
 const RedisStore = require('connect-redis')(session);
 const redisConf = config.get('redis');
@@ -17,8 +19,8 @@ const PassportManager = require('./src/sessions/PassportManager');
 
 const auth = require('./routes/auth');
 const index = require('./routes/index');
-const users = require('./routes/users');
-const admin = require('./routes/admin');
+const users = require('./routes/admin/users');
+const admin = require('./routes/admin/index');
 
 const app = express();
 
@@ -61,14 +63,19 @@ app.use(passport.session());
 // Routes
 app.use('/', auth(passport));
 app.use('/', index);
-app.use('/users', users);
 app.use('/admin', admin);
+// Let's inject basic info for every view
+app.use('/admin/users', (req, res, next) => {
+  res.locals.roles = models.User.getAvailableRoles();
+  res.locals.sexValues = models.User.getSexValues();
+  next();
+}, users);
 
 PassportManager.configure(passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

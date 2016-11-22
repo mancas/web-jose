@@ -1,1 +1,135 @@
-.login-block .btn,body{width:100%}body{height:100%}.alert-notification{position:absolute;top:5%;left:50%;transform:translateX(-50%);max-width:768px;z-index:2048}.page-title .action-buttons{margin:9px 10px;float:right}.page-title .action-buttons a i{margin-right:10px}.v-block{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%)}.login-block{box-shadow:.05rem .05rem .5rem grey;padding:1rem;border-radius:.5rem;max-width:250px;margin:0 auto}.logo{text-align:center;padding-bottom:40px}.logo img{height:120px}.shake{animation:shake .4s;animation-iteration-count:3;-webkit-animation-name:shake;-webkit-animation-duration:.4s;-webkit-animation-iteration-count:3}@-moz-keyframes shake{0%,100%{transform:translateX(0)}25%,75%{transform:translateX(1rem)}50%{transform:translateX(-1rem)}}@-webkit-keyframes shake{0%,100%{transform:translateX(0)}25%,75%{transform:translateX(1rem)}50%{transform:translateX(-1rem)}}@-o-keyframes shake{0%,100%{transform:translateX(0)}25%,75%{transform:translateX(1rem)}50%{transform:translateX(-1rem)}}@keyframes shake{0%,100%{transform:translateX(0)}25%,75%{transform:translateX(1rem)}50%{transform:translateX(-1rem)}}
+body {
+  height: 100%;
+  width: 100%;
+}
+.alert-notification {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 768px;
+  z-index: 2048;
+}
+.page-title .action-buttons {
+  margin: 9px 10px 9px;
+  float: right;
+}
+.page-title .action-buttons a i {
+  margin-right: 10px;
+}
+.v-block {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+.login-block {
+  box-shadow: 0.05rem 0.05rem 0.5rem #808080;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-width: 250px;
+  margin: 0 auto;
+}
+.login-block .btn {
+  width: 100%;
+}
+.logo {
+  text-align: center;
+  padding-bottom: 40px;
+}
+.logo img {
+  height: 120px;
+}
+.shake {
+  animation: shake 0.4s;
+  animation-iteration-count: 3;
+  -webkit-animation-name: shake /* Chrome, Safari, Opera */;
+  -webkit-animation-duration: 0.4s /* Chrome, Safari, Opera */;
+  -webkit-animation-iteration-count: 3 /* Chrome, Safari, Opera */;
+}
+@-webkit-keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(1rem);
+  }
+  50% {
+    transform: translateX(-1rem);
+  }
+  75% {
+    transform: translateX(1rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-moz-keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(1rem);
+  }
+  50% {
+    transform: translateX(-1rem);
+  }
+  75% {
+    transform: translateX(1rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(1rem);
+  }
+  50% {
+    transform: translateX(-1rem);
+  }
+  75% {
+    transform: translateX(1rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-o-keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(1rem);
+  }
+  50% {
+    transform: translateX(-1rem);
+  }
+  75% {
+    transform: translateX(1rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(1rem);
+  }
+  50% {
+    transform: translateX(-1rem);
+  }
+  75% {
+    transform: translateX(1rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

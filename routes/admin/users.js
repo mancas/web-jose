@@ -1,13 +1,8 @@
-var express = require('express');
-var router = express.Router();
-const models = require('../src/models/').models
+const express = require('express');
+const router = express.Router();
+const models = require('../../src/models/index').models;
 
-/* GET dashboard. */
 router.get('/', (req, res, next) => {
-  res.render('admin/dashboard', { user: {name: 'Manu'} });
-});
-
-router.get('/users', (req, res, next) => {
   models.User.find({}, (err, users) => {
     if (err) {
       return next(err);
@@ -17,14 +12,11 @@ router.get('/users', (req, res, next) => {
   });
 });
 
-router.get('/users/create', (req, res, next) => {
-  res.render('admin/pages/users/form', {
-    roles: models.User.getAvailableRoles(),
-    sexValues: models.User.getSexValues()
-  });
+router.get('/create', (req, res, next) => {
+  res.render('admin/pages/users/form');
 });
 
-router.post('/users/create', (req, res, next) => {
+router.post('/create', (req, res, next) => {
   const password = req.body.password;
   const password_repeated = req.body.password_repeat;
 
@@ -57,7 +49,7 @@ router.post('/users/create', (req, res, next) => {
   });
 });
 
-router.get('/users/edit/:user_id', (req, res, next) => {
+router.get('/edit/:user_id', (req, res, next) => {
   models.User.findOne({ _id: req.params.user_id }, (err, user) => {
     if (err) {
       console.error(err);
