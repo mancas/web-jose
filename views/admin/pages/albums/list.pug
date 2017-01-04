@@ -1,0 +1,42 @@
+extends ../../base
+
+block content
+  div
+    .page-title
+      .title_left
+        h3 Albums
+      .action-buttons
+        a(href='albums/create').btn.btn-default
+          i.fa.fa-plus
+          | Nuevo album
+    .clearfix
+
+    .row
+      .col-md-12
+        .x_panel
+          .x_title
+            h2 Tus albums
+            .clearfix
+          .x_content
+            if albums && albums.length
+              table.table.table-hover
+                thead
+                  tr
+                    th #ID
+                    th Título
+                    th Fotos
+                    th Actions
+                tbody
+                  each album in albums
+                    tr
+                      td #{album._id}
+                      td #{album.title}
+                      td #{album.photos}
+                      td Actions!
+            else
+              p There is no albums in our database. Please try to add one by clicking on the button
+  include ../../components/remove_modal
+
+block scripts
+  script(src='/js/admin/html_helper.js')
+  script(src='/js/admin/alert_helper.js')

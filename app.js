@@ -19,8 +19,11 @@ const PassportManager = require('./src/sessions/PassportManager');
 
 const auth = require('./routes/auth');
 const index = require('./routes/index');
-const users = require('./routes/admin/users');
+
+// Admin routes
 const admin = require('./routes/admin/index');
+const users = require('./routes/admin/users');
+const albums = require('./routes/admin/albums');
 
 const app = express();
 
@@ -70,6 +73,8 @@ app.use('/admin/users', (req, res, next) => {
   res.locals.sexValues = models.User.getSexValues();
   next();
 }, users);
+app.use('/admin/albums', albums);
+
 
 PassportManager.configure(passport);
 

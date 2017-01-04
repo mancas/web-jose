@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-const stylus = require('gulp-stylus')
-const cleanCSS = require('gulp-clean-css')
+const stylus = require('gulp-stylus');
+const cleanCSS = require('gulp-clean-css');
 
-const runSequence = require('run-sequence')
+const runSequence = require('run-sequence');
 
 gulp.task('main', (cb) => {
   gulp.src('public/css/app.styl')

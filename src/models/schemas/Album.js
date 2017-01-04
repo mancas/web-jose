@@ -21,6 +21,25 @@ module.exports = (mongoose, name) => {
     }
   });
 
+  schema.statics.findWithPhotos = function(id, cb) {
+    this.findOne({_id: id}, (err, album) => {
+      if (err) {
+        console.error(err);
+        return cb(err);
+      }
+
+      mongoose.model('Photo').find({album_id: id}, (err, photos) => {
+        if (err) {
+          console.error(err);
+          return cb(err);
+        }
+
+        album.photos = photos;
+        cb(null, album);
+      })
+    });
+  };
+
   // TODO: add statics methods
 
   model = mongoose.model(name, schema);

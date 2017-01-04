@@ -71,11 +71,13 @@ module.exports = (mongoose, name) => {
           return next(err);
         }
         this.encrypted_password = hash;
+        this.u_at = Date.now();
+        next();
       })
+    } else {
+      this.u_at = Date.now();
+      next();
     }
-
-    this.u_at = Date.now();
-    next();
   });
 
   /* Authentication methods */

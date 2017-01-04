@@ -6,7 +6,7 @@ block content
       .title_left
         h3 Users
       .action-buttons
-        a(href='users/create').btn.btn-default
+        a(href='/admin/users/create').btn.btn-default
           i.fa.fa-plus
           | Create user
     .clearfix
@@ -34,6 +34,16 @@ block content
                       td #{user.name}
                       td #{user.sex}
                       td #{user.role}
-                      td Actions!
+                      td.actions
+                        a(href='/admin/users/edit/' + user._id)
+                          i.fa.fa-pencil
+                        a(href='/admin/users/remove/' + user._id).delete
+                          i.fa.fa-trash
             else
               p There is no users in our database. Please try to add one by clicking on the button
+
+  include ../../components/remove_modal
+
+block scripts
+  script(src='/js/admin/html_helper.js')
+  script(src='/js/admin/alert_helper.js')

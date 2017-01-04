@@ -1,0 +1,40 @@
+extends ../../base
+
+block content
+  div
+    .page-title
+      .title_left
+
+    .clearfix
+    .row
+      .col-md-12.col-sm-12.col-xs-12
+        .x_panel
+          .x_title
+            h2 #{!edition ? 'Añadir nuevo album' : 'Editar album '}
+              | &nbsp;
+              if edition
+                code #{album.title}
+            .clearfix
+          .x_content
+            br
+            form.form-horizontal.form-label-left(data-parsley-validate, novalidate, method='post')
+              .form-group.item
+                label.control-label.col-md-3.col-sm-3.col-xs-12(for='title')
+                  | Título del album
+                  span.required *
+                .col-md-4.col-sm-4.col-xs-12
+                  input.form-control#title(required, type='text', name='title', value=(edition ? album.title : ''), disabled=edition)
+
+              .form-group.item
+                label.control-label.col-md-3.col-sm-3.col-xs-12(for='summary')
+                  | Descripción corta
+                  span.required *
+                .col-md-4.col-sm-4.col-xs-12
+                  textarea.form-control#summary(required, name='summary', value=(edition ? album.summary : ''))
+
+              .ln_solid
+
+              .form-group
+                .col-md-9.col-sm-9.col-xs-12.col-md-offset-3
+                  button(type='submit').btn.btn-success #{edition ? 'Guardar album': 'Crear album'}
+

@@ -17,6 +17,9 @@ body {
 .page-title .action-buttons a i {
   margin-right: 10px;
 }
+table .actions i {
+  margin-right: 8px;
+}
 .v-block {
   position: absolute;
   top: 50%;
