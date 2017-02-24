@@ -25,3 +25,4 @@ gulp.task('watch', () => {
 });
 
 gulp.task('default', (cb) => { runSequence(['main', 'admin', 'watch'], cb) });
+gulp.task('build', (cb) => { runSequence(['main', 'admin'], cb) });

@@ -7,15 +7,15 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const config = require('config');
 
-const models = require('./src/models/index').models;
+const models = require('./models/index').models;
 
 // Redis
 const RedisStore = require('connect-redis')(session);
 const redisConf = config.get('redis');
-const redisClient = require('./src/redis/');
+const redisClient = require('./redis/index');
 
 const passport = require('passport');
-const PassportManager = require('./src/sessions/PassportManager');
+const PassportManager = require('./sessions/PassportManager');
 
 const auth = require('./routes/auth');
 const index = require('./routes/index');

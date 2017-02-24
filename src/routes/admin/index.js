@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const models = require('../../src/models/index').models;
+const models = require('../../models/index').models;
 
 /* GET dashboard. */
 router.get('/', (req, res, next) => {

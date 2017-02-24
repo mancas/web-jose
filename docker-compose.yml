@@ -1,46 +1,7 @@
-# ownCloud with MariaDB/MySQL
-#
-# Access via "http://localhost:8080" (or "http://$(docker-machine ip):8080" if using docker-machine)
-#
-# During initial ownCloud setup, select "Storage & database" --> "Configure the database" --> "MySQL/MariaDB"
-# Database user: root
-# Database password: example
-# Database name: pick any name
-# Database host: replace "localhost" with "mysql"
-
-version: '2'
+version: '3'
 
 services:
-
-  owncloud:
-    image: owncloud
-    ports:
-      - 9000:80
-    volumes_from:
-        - owncloud-data
-    hostname: cloud
-    domainname: cloud.jose.com # Change to the hostname you will use
-
-  mysql:
-    image: mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-    volumes_from:
-        - mariadb-data
-
-  owncloud-data:
-    image: owncloud
-    # This is a data container, so we want to exit as soon as the container is created
-    # BUT we will have to fix permissions issues first (33 is the ID of the www-data user)
-    command: /bin/bash -c "/bin/chown -R 33 /tmp/owncloud_data && /bin/chown -R 33 /tmp/owncloud_config"
-    volumes:
-      - /var/www/owncloud_data
-      - /var/www/owncloud_config
-
-  mariadb-data:
-    image: mariadb
-    # This is a data container, so we want to exit as soon as the container is created
-    command: /bin/true
-    volumes:
-      - /etc/mariadb
-      - /var/lib/mariadb
+    mancas_debian:
+        build: .
+        volumes:
+            - /tmp/test:/tmp/test

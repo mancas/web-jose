@@ -1,5 +1,5 @@
 const express = require('express');
-const models = require('../../src/models/index').models;
+const models = require('../../models/index').models;
 
 function list(req, res, next) {
   models.User.find({}, (err, users) => {

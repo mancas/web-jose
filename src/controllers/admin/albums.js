@@ -1,5 +1,5 @@
 const express = require('express');
-const models = require('../../src/models/index').models;
+const models = require('../../models/index').models;
 const async = require('async');
 
 function list(req, res, next) {

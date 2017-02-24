@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const models = require('../src/models').models;
+const models = require('../models').models;
 const User = models.User;
 
 const logoutUser = function (req, res, next) {
