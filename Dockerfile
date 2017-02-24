@@ -12,6 +12,8 @@ COPY package.json /opt/joseweb/
 COPY start.sh /opt/joseweb/
 COPY public /opt/joseweb/public
 
+RUN npm install
+
 USER node
 
 EXPOSE 3000
