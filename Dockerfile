@@ -13,6 +13,7 @@ COPY start.sh /opt/joseweb/
 COPY public /opt/joseweb/public
 
 RUN npm install
+RUN npm install inotify
 
 USER node
 

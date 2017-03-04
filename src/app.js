@@ -17,6 +17,8 @@ const redisClient = require('./redis/index');
 const passport = require('passport');
 const PassportManager = require('./sessions/PassportManager');
 
+const InotifyManager = require('./inotify/InotifyManager');
+
 const auth = require('./routes/auth');
 const index = require('./routes/index');
 
@@ -63,6 +65,9 @@ app.use(session(
 ));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Initializer inotify
+InotifyManager.configure();
 
 // Routes
 app.use('/', auth(passport));

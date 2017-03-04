@@ -5,13 +5,13 @@
   },
 
   "db": {
-    "hosts": ["192.168.1.37:27017"],
+    "hosts": ["192.168.1.35:27017"],
     "name": "jose-prepro",
     "username": "root",
     "password": "root"
   },
   "redis": {
-    "host": "192.168.1.37",
+    "host": "192.168.1.35",
     "port": 6379,
     "secret": "I am the most secret string in the W0rlD!"
   }
